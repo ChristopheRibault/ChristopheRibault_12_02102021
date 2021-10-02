@@ -5,6 +5,7 @@ const StyledBar = style.aside`
   top: 0;
   left: 0;
   height: 100%;
+  width: 100px;
   background-color: #020203;
   color: #fff;
   display: flex;

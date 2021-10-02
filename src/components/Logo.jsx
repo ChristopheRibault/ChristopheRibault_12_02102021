@@ -6,7 +6,9 @@ class Logo extends Component {
   render() {
     return (
       <Link to='/'>
-        <img src={logo} alt='sportsee logo' />
+        <h1>
+          <img src={logo} alt='sportsee logo' />
+        </h1>
       </Link>
     );
   }
