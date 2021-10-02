@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Header } from './layout';
+import { Header, Sidebar } from './layout';
 import Router from './Router';
 
 class App extends Component {
@@ -8,6 +8,7 @@ class App extends Component {
       <div className='App'>
         <Router>
           <Header />
+          <Sidebar />
         </Router>
       </div>
     );
