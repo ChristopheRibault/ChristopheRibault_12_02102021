@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import style from 'styled-components';
-import Greetings from '../components/Greetings';
+import { Greetings } from '../components';
+import { Charts } from '../layout';
 import Fetcher from '../utils/fetcher';
 
 const fetcher = new Fetcher();
@@ -27,6 +28,7 @@ class Home extends Component {
     return (
       <this.StyledMain className='home-page'>
         <Greetings name={this.state.data?.userInfos?.firstName} />
+        <Charts />
       </this.StyledMain>
     );
   }

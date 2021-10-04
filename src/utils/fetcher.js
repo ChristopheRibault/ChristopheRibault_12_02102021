@@ -9,6 +9,12 @@ class Fetcher {
     });
   }
 
+  /**
+   * Get data for a user
+   * @param {Number} userId 
+   * @param {('activity'|'average-sessions'|'performance')} [option]
+   * @returns {Promise<Object>} fetched data
+   */
   async get(userId, option) {
     const optionsList = [ 'activity', 'average-sessions', 'performance' ];
 

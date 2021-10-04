@@ -33,7 +33,7 @@ class Greetings extends Component {
 }
 
 Greetings.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
 };
 
 export default Greetings;
