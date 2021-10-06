@@ -1,11 +1,14 @@
 import { Component } from 'react';
-import { ActivityChart } from '../components';
+import { ActivityChart, DurationChart } from '../components';
 
 class Charts extends Component {
 
   render() {
     return (
-      <ActivityChart />
+      <div>
+        <ActivityChart />
+        <DurationChart />
+      </div>
     );
   }
 
