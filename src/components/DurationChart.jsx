@@ -7,7 +7,7 @@ import {
   Line,
   ResponsiveContainer,
 } from 'recharts';
-import style from 'styled-components';
+import styled from 'styled-components';
 
 import Fetcher from '../utils/fetcher';
 import activeDot from '../assets/dot-active.svg';
@@ -20,12 +20,20 @@ class DurationChart extends Component {
     this.state = { data: {}};
   }
 
-  StyledChart = style.div`
+  StyledChart = styled.div`
+    position: relative;
+    grid-area: duration;
     background-color: #FF0000;
     border-radius: 5px;
     padding: 1em;
-    width: 25%;
-    height: 250px;
+  `;
+
+  StyledTitle = styled.h3`
+    position: absolute;
+    top: 0;
+    color: #fff;
+    font-size: .9em;
+    font-weight: 500;
   `;
 
   formatTicks(value) {
@@ -41,6 +49,7 @@ class DurationChart extends Component {
   render() {
     return (
       <this.StyledChart>
+        <this.StyledTitle>Durée moyenne des sessions</this.StyledTitle>
         <ResponsiveContainer width={'100%'} height={'100%'}>
           <LineChart data={this.state.data.sessions}>
             <XAxis 
