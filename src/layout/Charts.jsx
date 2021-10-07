@@ -6,8 +6,8 @@ class Charts extends Component {
   render() {
     return (
       <div>
-        <ActivityChart />
-        <DurationChart />
+        <ActivityChart id={this.props.id} />
+        <DurationChart id={this.props.id} />
       </div>
     );
   }

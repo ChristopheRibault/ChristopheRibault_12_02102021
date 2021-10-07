@@ -34,7 +34,7 @@ class DurationChart extends Component {
   }
 
   componentDidMount() {
-    fetcher.get(12, 'average-sessions')
+    fetcher.get(this.props.id, 'average-sessions')
       .then(data => this.setState(data));
   }
 

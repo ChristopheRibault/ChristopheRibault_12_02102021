@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import style from 'styled-components';
 
 const Nav = style.nav`
@@ -18,15 +19,17 @@ const StyledNavLink = style(NavLink)`
 
 class Navbar extends Component {
   render() {
+    console.log(this.props);
+
     return (
       <Nav>
-        <StyledNavLink exact to='/'>Accueil</StyledNavLink>
-        <StyledNavLink exact to='/profil'>Profil</StyledNavLink>
-        <StyledNavLink exact to='/settings'>Réglage</StyledNavLink>
-        <StyledNavLink exact to='/community'>Communauté</StyledNavLink>
+        <StyledNavLink exact to={`/user/${this.props.match.params.id}`}>Accueil</StyledNavLink>
+        <StyledNavLink to={`/user/${this.props.match.params.id}/profil`}>Profil</StyledNavLink>
+        <StyledNavLink to={`/user/${this.props.match.params.id}/settings`}>Réglage</StyledNavLink>
+        <StyledNavLink to={`/user/${this.props.match.params.id}/community`}>Communauté</StyledNavLink>
       </Nav>
     );
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

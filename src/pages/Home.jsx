@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { withRouter } from 'react-router';
 import style from 'styled-components';
 import { Greetings } from '../components';
 import { Charts } from '../layout';
@@ -20,7 +21,7 @@ class Home extends Component {
   `
 
   componentDidMount() {
-    fetcher.get(18)
+    fetcher.get(this.props.match.params.id)
       .then(data => this.setState(data));
   }
 
@@ -28,10 +29,10 @@ class Home extends Component {
     return (
       <this.StyledMain className='home-page'>
         <Greetings name={this.state.data?.userInfos?.firstName} />
-        <Charts />
+        <Charts id={this.props.match.params.id} />
       </this.StyledMain>
     );
   }
 }
 
-export default Home;
+export default withRouter(Home);

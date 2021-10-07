@@ -23,7 +23,7 @@ class ActivityChart extends Component {
   }
 
   componentDidMount() {
-    fetcher.get(12, 'activity')
+    fetcher.get(this.props.id, 'activity')
       .then(data => this.setState(data));
   }
 
