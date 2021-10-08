@@ -3,6 +3,8 @@ import Greetings from './Greetings';
 import ActivityChart from './ActivityChart';
 import DurationChart from './DurationChart';
 import TypesChart from './TypesChart';
+import ScoreChart from './ScoreChart';
+import ScoreLegend from './ScoreLegend';
 import Tooltip from './Tooltip';
 
 export {
@@ -11,5 +13,7 @@ export {
   ActivityChart,
   DurationChart,
   TypesChart,
+  ScoreChart,
+  ScoreLegend,
   Tooltip,
 };

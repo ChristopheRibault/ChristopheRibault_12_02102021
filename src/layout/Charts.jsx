@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import style from 'styled-components';
-import { ActivityChart, DurationChart, TypesChart } from '../components';
+import { ActivityChart, DurationChart, ScoreChart, TypesChart } from '../components';
 
 class Charts extends Component {
 
@@ -18,6 +18,7 @@ class Charts extends Component {
         <ActivityChart id={this.props.id} />
         <DurationChart id={this.props.id} />
         <TypesChart id ={this.props.id} />
+        <ScoreChart id ={this.props.id} />
       </this.Grid>
     );
   }
