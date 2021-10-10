@@ -5,26 +5,26 @@ class ScoreLegend extends Component {
     return(
       <g>
         <text
-          fontSize={30}
-          strock='#000'
-          x='30%'
+          fontSize='3em'
+          fill='#000'
+          x='35%'
           y='45%'
         >
           { `${this.props.score * 100}%` }
         </text>
         <text
-          fontSize={20}
-          strock='#c4c4c4'
-          x='30%'
+          fontSize='1.2em'
+          fill='#c4c4c4'
+          x='35%'
           y='55%'
         >
           de votre
         </text>
         <text
-          fontSize={20}
-          strock='#c4c4c4'
-          x='30%'
-          y='65%'
+          fontSize='1.2em'
+          fill='#c4c4c4'
+          x='35%'
+          y='62%'
         >
           objectif
         </text>

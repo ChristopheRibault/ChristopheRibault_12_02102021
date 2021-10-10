@@ -6,6 +6,7 @@ import {
   LineChart,
   Line,
   ResponsiveContainer,
+  Customized,
 } from 'recharts';
 import styled from 'styled-components';
 
@@ -28,14 +29,6 @@ class DurationChart extends Component {
     padding: 1em;
   `;
 
-  StyledTitle = styled.h3`
-    position: absolute;
-    top: 0;
-    color: #fff;
-    font-size: .9em;
-    font-weight: 500;
-  `;
-
   formatTicks(value) {
     const days = [ 'L', 'M', 'M', 'J', 'V', 'S', 'D' ];
     return days[value];
@@ -49,9 +42,23 @@ class DurationChart extends Component {
   render() {
     return (
       <this.StyledChart>
-        <this.StyledTitle>Durée moyenne des sessions</this.StyledTitle>
         <ResponsiveContainer width={'100%'} height={'100%'}>
           <LineChart data={this.state.data.sessions}>
+            <Customized 
+              component={() => <g
+                fontSize='1em'
+                fill='#fff'
+                opacity='0.5'
+                x='5%'
+              >
+                <text
+                  y='10%'
+                >Durée moyenne des</text>
+                <text
+                  y='20%'
+                >sessions</text>
+              </g>} 
+            />
             <XAxis 
               axisLine={false}
               tickLine={false}

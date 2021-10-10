@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { BarChart, Tooltip, XAxis, YAxis, Legend, Bar, ResponsiveContainer } from 'recharts';
+import { BarChart, Tooltip, XAxis, YAxis, Legend, Bar, ResponsiveContainer, Customized } from 'recharts';
 import Fetcher from '../utils/fetcher';
 import { Tooltip as CustomTooltip } from '../components';
 import styled from 'styled-components';
@@ -34,20 +34,18 @@ class ActivityChart extends Component {
     padding: 1em
   `;
 
-  StyledTitle = styled.h3`
-    position: absolute;
-    top: 0;
-    color: #000;
-    font-size: .9em;
-    font-weight: 500;
-  `;
-
   render() {
     return (
       <this.StyledChart>
-        <this.StyledTitle>Activité quotidienne</this.StyledTitle>
         <ResponsiveContainer width='100%' height={200}>
           <BarChart data={this.state.data.sessions}>
+            <Customized component={() => <text
+              fontSize='1em'
+              fontWeight={500}
+              fill='#000'
+              x='0%'
+              y='20%'
+            >Activité quotidienne</text>} />
             <XAxis axisLine={false} tickLine={false}/>
             <YAxis yAxisId='kilAxis' orientation='right' axisLine={false} tickLine={false} type="number" domain={[ 'dataMin -1', 'dataMax + .5' ]} allowDecimals={false} />
             <YAxis hide yAxisId='calAxis' orientation='right' />
