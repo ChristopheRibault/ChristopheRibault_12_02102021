@@ -31,7 +31,6 @@ class TypesChart extends Component {
   `;
 
   render() {
-    console.log(this.state.data);
     return (
       <this.StyledChart>
         <ResponsiveContainer width='100%' height='100%'>
