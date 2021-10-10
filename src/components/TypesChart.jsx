@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { RadarChart, PolarAngleAxis, Radar, ResponsiveContainer, PolarGrid, PolarRadiusAxis } from 'recharts';
+import { RadarChart, PolarAngleAxis, Radar, ResponsiveContainer, PolarGrid } from 'recharts';
 import styled from 'styled-components';
 import Fetcher from '../utils/fetcher';
 
@@ -44,7 +44,7 @@ class TypesChart extends Component {
           >
             <PolarGrid 
               gridType='polygon'
-              // polarAngles={[]}
+              radialLines={false}
               polarRadius={[ 10, 20, 40, 60, 80 ]}
               stroke='#fff'
             />
@@ -56,11 +56,6 @@ class TypesChart extends Component {
               stroke='#fff'
               axisLine={false}
             />
-            {/* <PolarRadiusAxis 
-              axisLine={false} 
-              ticks={false} 
-              domain={[ 0, 250 ]}
-            /> */}
             <Radar dataKey="value" fill="#ff0101" fillOpacity={0.7} />
           </RadarChart>
         </ResponsiveContainer>
