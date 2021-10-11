@@ -4,6 +4,8 @@ import { Logo } from '../components';
 import style from 'styled-components';
 
 const StyledHeader = style.header`
+  position: fixed;
+  z-index: 1;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
