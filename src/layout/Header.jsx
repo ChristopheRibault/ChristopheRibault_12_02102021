@@ -5,6 +5,7 @@ import style from 'styled-components';
 
 const StyledHeader = style.header`
   position: fixed;
+  top: 0;
   z-index: 1;
   display: flex;
   flex-flow: row nowrap;
