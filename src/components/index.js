@@ -6,7 +6,8 @@ import TypesChart from './TypesChart';
 import ScoreChart from './ScoreChart';
 import ScoreLegend from './ScoreLegend';
 import KeyData from './KeyData';
-import Tooltip from './Tooltip';
+import ActivityTooltip from './ActivityTooltip';
+import DurationTooltip from './DurationTooltip';
 
 export {
   Logo,
@@ -17,5 +18,6 @@ export {
   ScoreChart,
   ScoreLegend,
   KeyData,
-  Tooltip,
+  ActivityTooltip,
+  DurationTooltip,
 };

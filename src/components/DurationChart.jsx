@@ -9,9 +9,9 @@ import {
   Customized,
 } from 'recharts';
 import styled from 'styled-components';
+import { DurationTooltip as CustomTooltip } from '.';
 
 import Fetcher from '../utils/fetcher';
-import activeDot from '../assets/dot-active.svg';
 
 const fetcher = new Fetcher();
 
@@ -65,9 +65,9 @@ class DurationChart extends Component {
               tickFormatter={this.formatTicks}
               stroke='#fff'
             />
-            <YAxis hide domain={[ 'dataMin', 'dataMax + 10' ]} />
-            <Line type="monotone" dataKey='sessionLength' stroke='#fff' dot={false} activeDot={activeDot} />
-            <Tooltip />
+            <YAxis hide domain={[ 'dataMin - 5', 'dataMax + 10' ]} />
+            <Line type="monotone" dataKey='sessionLength' stroke='#fff' dot={false} activeDot={true} />
+            <Tooltip content={<CustomTooltip props={this.props} />} />
           </LineChart>
         </ResponsiveContainer>
       </this.StyledChart>

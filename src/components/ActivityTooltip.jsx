@@ -2,7 +2,7 @@ import react from 'react';
 import style from 'styled-components';
 import PropTypes from 'prop-types';
 
-class Tooltip extends react.Component {
+class ActivityTooltip extends react.Component {
 
   CustomTooltip = style.div`
     background-color: #E60000;
@@ -34,9 +34,9 @@ class Tooltip extends react.Component {
   };
 }
 
-Tooltip.propTypes = {
+ActivityTooltip.propTypes = {
   active: PropTypes.bool,
   payload: PropTypes.array,
 };
 
-export default Tooltip;
+export default ActivityTooltip;

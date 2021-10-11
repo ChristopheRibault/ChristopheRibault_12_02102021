@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { BarChart, Tooltip, XAxis, YAxis, Legend, Bar, ResponsiveContainer, Customized } from 'recharts';
 import Fetcher from '../utils/fetcher';
-import { Tooltip as CustomTooltip } from '../components';
+import { ActivityTooltip as CustomTooltip } from '.';
 import styled from 'styled-components';
 
 const fetcher = new Fetcher();
