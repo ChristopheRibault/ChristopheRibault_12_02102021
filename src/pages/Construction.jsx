@@ -3,7 +3,7 @@ import { Component } from 'react';
 class Construction extends Component {
   render() {
     return (
-      <div>Page en construction</div>
+      <main>Page en construction</main>
     );
   }
 }

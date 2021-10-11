@@ -26,7 +26,7 @@ class Greetings extends Component {
           <p>Bonjour</p>
           <this.StyledName>{this.props.name}</this.StyledName>
         </this.StyledGreeting>
-        <div>message</div>
+        <div>Félicitation ! Vous avez explosé vos objectifs hier 👏</div>
       </div>
     );
   }
