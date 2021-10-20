@@ -17,7 +17,7 @@ class Home extends Component {
 
   StyledMain = style.main`
     margin-left: 100px;
-    padding: 3rem;
+    padding: 2rem;
   `
 
   componentDidMount() {

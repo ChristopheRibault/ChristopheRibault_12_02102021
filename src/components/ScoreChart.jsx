@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { PieChart, Pie, ResponsiveContainer, Customized } from 'recharts';
+import { ResponsiveContainer, Customized, RadialBarChart, RadialBar } from 'recharts';
 import styled from 'styled-components';
 import { ScoreLegend } from '.';
 import Fetcher from '../utils/fetcher';
@@ -17,7 +17,8 @@ class ScoreChart extends Component {
 
   StyledChart = styled.div`
     grid-area: score;
-    background-color: #fff;
+    background-color: #fbfbfb;
+    border-radius: 5px;
     font-size: .7em;
   `;
 
@@ -31,18 +32,16 @@ class ScoreChart extends Component {
     return (
       <this.StyledChart>
         <ResponsiveContainer width='100%' height='100%'>
-          <PieChart>
-            <Customized component={<ScoreLegend score={this.state.score} />} />
-            <Pie 
-              data={[{ score: 1 }]}
-              dataKey="score"
-              innerRadius={70}
-              outerRadius={80}
-              fill="#ff0000"
-              startAngle={-270}
-              endAngle={360 * this.state.score -270}
-            />
-          </PieChart>
+        <RadialBarChart 
+          innerRadius="70%" 
+          outerRadius="100%" 
+          data={[{ score: 1, fill:'#fbfbfb' }, { score: this.state.score }]} 
+          startAngle={90} 
+          endAngle={450}
+        >
+          <Customized component={<ScoreLegend score={this.state.score} />} />
+          <RadialBar minAngle={15} clockWise={false} dataKey='score' fill='#ff0000' cornerRadius={20} />
+        </RadialBarChart>
         </ResponsiveContainer>
       </this.StyledChart>
     );

@@ -22,6 +22,7 @@ class KeyData extends Component {
     align-items: start;
     justify-content: space-between;
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
   `;
@@ -30,6 +31,10 @@ class KeyData extends Component {
     display: flex;
     flex-flow: row nowrap;
     gap: 1em;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    padding: 1em;
+    width: 100%;
   `;
 
   StyledData = styled.div`

@@ -5,10 +5,11 @@ import { ActivityChart, DurationChart, ScoreChart, TypesChart, KeyData } from '.
 class Charts extends Component {
 
   Grid = style.div`
+    margin-top: 1em;
     display: grid;
     grid-template-areas: " activity activity activity keydata" "duration types score keydata";
-    grid-template-rows: 250px 250px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 250px 200px;
+    grid-template-columns: repeat(3, 1fr) 180px;
     gap: 1em;
   `;
 

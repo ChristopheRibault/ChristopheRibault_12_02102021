@@ -37,14 +37,14 @@ class TypesChart extends Component {
           <RadarChart
             data={this.state.data.data}
             innerRadius='0%'
-            outerRadius='70%'
+            outerRadius='67%'
             startAngle={-150}
             endAngle={210}
           >
             <PolarGrid 
               gridType='polygon'
               radialLines={false}
-              polarRadius={[ 10, 20, 40, 60, 80 ]}
+              polarRadius={[ 12, 20, 35, 50, 65 ]}
               stroke='#fff'
             />
             <PolarAngleAxis
