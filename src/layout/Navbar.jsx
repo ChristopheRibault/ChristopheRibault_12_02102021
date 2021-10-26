@@ -19,8 +19,6 @@ const StyledNavLink = style(NavLink)`
 
 class Navbar extends Component {
   render() {
-    console.log(this.props);
-
     return (
       <Nav>
         <StyledNavLink exact to={`/user/${this.props.match.params.id}`}>Accueil</StyledNavLink>

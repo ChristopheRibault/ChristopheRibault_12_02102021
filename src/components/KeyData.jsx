@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Fetcher from '../utils/fetcher';
 import icons from '../assets/icons';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const fetcher = new Fetcher();
@@ -106,5 +107,9 @@ class KeyData extends Component {
     );
   }
 }
+
+KeyData.props = {
+  id: PropTypes.number.isRequired,
+};
 
 export default KeyData;

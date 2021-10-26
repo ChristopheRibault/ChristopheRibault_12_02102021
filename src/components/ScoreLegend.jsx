@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 
 class ScoreLegend extends Component {
@@ -32,5 +33,9 @@ class ScoreLegend extends Component {
     );
   }
 }
+
+ScoreLegend.props = {
+  score: PropTypes.number.isRequired,
+};
 
 export default ScoreLegend;

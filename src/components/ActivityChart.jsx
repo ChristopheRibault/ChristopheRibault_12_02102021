@@ -3,6 +3,7 @@ import { BarChart, Tooltip, XAxis, YAxis, Legend, Bar, ResponsiveContainer, Cust
 import Fetcher from '../utils/fetcher';
 import { ActivityTooltip as CustomTooltip } from '.';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const fetcher = new Fetcher();
 class ActivityChart extends Component {
@@ -11,6 +12,10 @@ class ActivityChart extends Component {
     this.state = { data: {}};
   }
 
+  /**
+   * @param {string} value
+   * @returns {ReactElement}
+   */
   formatLegend = (value) => {
     const map = {
       kilogram: 'Poid (kg)',
@@ -62,5 +67,9 @@ class ActivityChart extends Component {
   }
 
 }
+
+ActivityChart.props = {
+  id: PropTypes.number.isRequired,
+};
 
 export default ActivityChart;

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { ResponsiveContainer, Customized, RadialBarChart, RadialBar } from 'recharts';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScoreLegend } from '.';
 import Fetcher from '../utils/fetcher';
@@ -47,5 +48,9 @@ class ScoreChart extends Component {
     );
   }
 }
+
+ScoreChart.props = {
+  id: PropTypes.number.isRequired,
+};
 
 export default ScoreChart;

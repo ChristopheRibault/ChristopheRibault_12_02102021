@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { RadarChart, PolarAngleAxis, Radar, ResponsiveContainer, PolarGrid } from 'recharts';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Fetcher from '../utils/fetcher';
 
@@ -14,6 +15,11 @@ class TypesChart extends Component {
     };
   }
 
+  /**
+   * Format radial axe ticks values
+   * @param {number} value 
+   * @returns {string}
+   */
   tickFormatter(value) {
     return this.state.data.kind?.[value];
   }
@@ -62,5 +68,10 @@ class TypesChart extends Component {
     );
   }
 }
+
+TypesChart.props = {
+  id: PropTypes.number.isRequired,
+};
+
 
 export default TypesChart;

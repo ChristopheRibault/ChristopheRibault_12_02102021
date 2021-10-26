@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import style from 'styled-components';
 import { ActivityChart, DurationChart, ScoreChart, TypesChart, KeyData } from '../components';
 
@@ -24,7 +25,10 @@ class Charts extends Component {
       </this.Grid>
     );
   }
-
 }
+
+Charts.props = {
+  id: PropTypes.number.isRequired,
+};
 
 export default Charts;

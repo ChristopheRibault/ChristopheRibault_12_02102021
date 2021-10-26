@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
   Customized,
 } from 'recharts';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { DurationTooltip as CustomTooltip } from '.';
 
@@ -36,11 +37,20 @@ class DurationChart extends Component {
     opacity: 0.5
   `;
 
+  /**
+   * Format absisse ticks values
+   * @param {number} value 
+   * @returns {string}
+   */
   formatTicks(value) {
     const days = [ 'L', 'M', 'M', 'J', 'V', 'S', 'D' ];
     return days[value];
   }
 
+  /**
+   * Set mouse absisse coordinate to state
+   * @param {Event} e 
+   */
   onMouseMove(e) {
     const activeX = e.activeCoordinate?.x || '100%';
     this.setState({ activeX });
@@ -106,5 +116,9 @@ class DurationChart extends Component {
   }
 
 }
+
+DurationChart.props = {
+  id: PropTypes.number.isRequired,
+};
 
 export default DurationChart;
