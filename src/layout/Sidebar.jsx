@@ -1,6 +1,10 @@
+import { Component } from 'react';
 import style from 'styled-components';
+import logos from '../assets/activities';
 
-const StyledBar = style.aside`
+class Sidebar extends Component {
+
+  StyledBar = style.aside`
   position: fixed;
   top: 0;
   left: 0;
@@ -16,7 +20,7 @@ const StyledBar = style.aside`
   padding: 1em
 `;
 
-const Logos = style.ul`
+Logos = style.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -26,14 +30,14 @@ const Logos = style.ul`
   gap: .5em;
 `;
 
-const Logo = style.li`
+Logo = style.li`
   transform: scale(.8);
   background-color: #fff;
   padding: .5em;
   border-radius: 6px;
 `;
 
-const Copyright = style.p`
+Copyright = style.p`
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   margin: 0 auto;
@@ -41,9 +45,18 @@ const Copyright = style.p`
   font-size: .5em;
 `;
 
-export {
-  StyledBar,
-  Logos,
-  Logo,
-  Copyright,
-};
+  render() {
+    return (
+      <this.StyledBar>
+        <this.Logos>
+          {logos.map((logo, i) => (
+            <this.Logo key={i}><img src={logo} alt='' /></this.Logo>
+          ))}
+        </this.Logos>
+        <this.Copyright>Copiryght, SportSee 2020</this.Copyright>
+      </this.StyledBar>
+    );
+  }
+}
+
+export default Sidebar;
