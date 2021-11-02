@@ -13,6 +13,7 @@ Refer to [this repository](https://github.com/OpenClassrooms-Student-Center/P9-f
 1. Install dependencies :
     - `yarn` or
     - `npm install`
+1. Copy `.env.example` in your own `.env` file
 1. Run application :
     - `yarn start` or
     - `npm start`
