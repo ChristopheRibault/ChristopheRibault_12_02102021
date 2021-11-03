@@ -9,7 +9,10 @@ const fetcher = new Fetcher();
 class ActivityChart extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: {}};
+    this.state = { 
+      data: {},
+      error: null,
+    };
   }
 
   /**
@@ -29,7 +32,8 @@ class ActivityChart extends Component {
 
   componentDidMount() {
     fetcher.get(this.props.id, 'activity')
-      .then(data => this.setState(data));
+      .then(data => this.setState(data))
+      .catch(error => this.setState({ error }));
   }
 
   StyledChart = styled.div`
@@ -41,6 +45,11 @@ class ActivityChart extends Component {
   `;
 
   render() {
+
+    if (this.state.error) {
+      return <div>Error: Can't display chart</div>;
+    }
+    
     return (
       <this.StyledChart>
         <ResponsiveContainer width='100%' height={200}>

@@ -13,6 +13,7 @@ class ScoreChart extends Component {
     super(props);
     this.state = {
       score: 0,
+      error: null,
     };
   }
 
@@ -25,10 +26,15 @@ class ScoreChart extends Component {
 
   componentDidMount() {
     fetcher.get(this.props.id)
-      .then(data => this.setState({ score: data.data.score }));
+      .then(data => this.setState({ score: data.data.score }))
+      .catch(error => this.setState({ error }));
   }
 
   render() {
+
+    if (this.state.error) {
+      return <div>Error: Can't display chart</div>;
+    }
     
     return (
       <this.StyledChart>

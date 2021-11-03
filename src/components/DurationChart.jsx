@@ -21,6 +21,7 @@ class DurationChart extends Component {
     this.state = { 
       data: {},
       activeX: '100%',
+      error: null,
     };
   }
 
@@ -58,10 +59,16 @@ class DurationChart extends Component {
 
   componentDidMount() {
     fetcher.get(this.props.id, 'average-sessions')
-      .then(data => this.setState(data));
+      .then(data => this.setState(data))
+      .catch(error => this.setState({ error }));
   }
 
   render() {
+
+    if (this.state.error) {
+      return <div>Error: Can't display chart</div>;
+    }
+    
     return (
       <this.StyledChart>
         <ResponsiveContainer width={'100%'} height={'100%'}>

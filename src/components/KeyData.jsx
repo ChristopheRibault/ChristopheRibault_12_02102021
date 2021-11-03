@@ -12,6 +12,7 @@ class KeyData extends Component {
     super(props);
     this.state = {
       data: {},
+      error: null,
     };
   }
 
@@ -59,10 +60,16 @@ class KeyData extends Component {
 
   componentDidMount() {
     fetcher.get(this.props.id)
-      .then(data => this.setState(data));
+      .then(data => this.setState(data))
+      .catch(error => this.setState({ error }));
   }
 
   render() {
+
+    if (this.state.error) {
+      return <div>Error: Can't display chart</div>;
+    }
+
     const { keyData } = this.state.data;
     const data = [
       {

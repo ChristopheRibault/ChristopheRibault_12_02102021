@@ -12,6 +12,7 @@ class TypesChart extends Component {
     super(props);
     this.state = {
       data: {},
+      error: null,
     };
   }
 
@@ -26,7 +27,8 @@ class TypesChart extends Component {
 
   componentDidMount() {
     fetcher.get(this.props.id, 'performance')
-      .then(data => this.setState(data));
+      .then(data => this.setState(data))
+      .catch(error => this.setState({ error }));
   }
 
   StyledChart = styled.div`
@@ -37,6 +39,11 @@ class TypesChart extends Component {
   `;
 
   render() {
+
+    if (this.state.error) {
+      return <div>Error: Can't display chart</div>;
+    }
+    
     return (
       <this.StyledChart>
         <ResponsiveContainer width='100%' height='100%'>

@@ -10,6 +10,7 @@ import {
   Home,
   Profil,
   Settings,
+  Error404,
 } from './pages';
 import Layout from './pages/Layout';
 
@@ -27,14 +28,17 @@ class App extends Component {
           <Route exact path='/user/:id'>
             <Layout component={Home} />
           </Route>
-          <Route path='/user/:id/profil' component={Profil}>
+          <Route path='/user/:id/profil'>
             <Layout component={Profil} />
           </Route>
-          <Route path='/user/:id/settings' component={Settings}>
+          <Route path='/user/:id/settings'>
             <Layout component={Settings} />
           </Route>
-          <Route path='/user/:id/community' component={Community}>
+          <Route path='/user/:id/community'>
             <Layout component={Community} />
+          </Route>
+          <Route>
+            <Layout component={Error404} />
           </Route>
         </Switch>
       </BrowserRouter>

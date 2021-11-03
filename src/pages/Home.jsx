@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { withRouter } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import style from 'styled-components';
 import { Greetings } from '../components';
 import { Charts } from '../layout';
@@ -12,6 +13,7 @@ class Home extends Component {
     super(props);
     this.state = {
       data: {},
+      error: null,
     };
   }
 
@@ -22,10 +24,16 @@ class Home extends Component {
 
   componentDidMount() {
     fetcher.get(this.props.match.params.id)
-      .then(data => this.setState(data));
+      .then(data => this.setState(data))
+      .catch(error => this.setState({ error }));
   }
 
   render() {
+
+    if (this.state.error) {
+      return <Redirect to='/error404' />;
+    }
+
     return (
       <this.StyledMain className='home-page'>
         <Greetings name={this.state.data?.userInfos?.firstName} />
