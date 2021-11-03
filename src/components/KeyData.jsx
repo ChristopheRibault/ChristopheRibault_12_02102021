@@ -94,7 +94,7 @@ class KeyData extends Component {
       <this.StyledList>
         {data.map(el => {
           return (
-            <this.StyledItem>
+            <this.StyledItem key={el.name}>
               <img src={icons[el.icon]} alt='calories icon' />
               <this.StyledData>
                 <this.StyledQty>{keyData?.[el.data]}{el.unit}</this.StyledQty>
