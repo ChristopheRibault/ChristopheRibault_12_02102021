@@ -3,14 +3,13 @@ import { ResponsiveContainer, Customized, RadialBarChart, RadialBar } from 'rech
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ScoreLegend } from '.';
-import Fetcher from '../utils/fetcher';
-
-const fetcher = new Fetcher();
+import Service from '../utils/service';
 
 class ScoreChart extends Component {
 
   constructor(props) {
     super(props);
+    this.service = new Service(props.id);
     this.state = {
       score: 0,
       error: null,
@@ -25,8 +24,8 @@ class ScoreChart extends Component {
   `;
 
   componentDidMount() {
-    fetcher.get(this.props.id)
-      .then(data => this.setState({ score: data.data.score }))
+    this.service.getScore()
+      .then(score => this.setState({ score }))
       .catch(error => this.setState({ error }));
   }
 

@@ -2,16 +2,16 @@ import { Component } from 'react';
 import { RadarChart, PolarAngleAxis, Radar, ResponsiveContainer, PolarGrid } from 'recharts';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Fetcher from '../utils/fetcher';
-
-const fetcher = new Fetcher();
+import Service from '../utils/service';
 
 class TypesChart extends Component {
 
   constructor(props) {
     super(props);
+    this.service = new Service(props.id);
     this.state = {
-      data: {},
+      data: [],
+      kind: {},
       error: null,
     };
   }
@@ -22,12 +22,12 @@ class TypesChart extends Component {
    * @returns {string}
    */
   tickFormatter(value) {
-    return this.state.data.kind?.[value];
+    return this.state.kind?.[value];
   }
 
   componentDidMount() {
-    fetcher.get(this.props.id, 'performance')
-      .then(data => this.setState(data))
+    this.service.getPerformance()
+      .then(res => this.setState({ data: res.data, kind: res.kind }))
       .catch(error => this.setState({ error }));
   }
 
@@ -43,12 +43,12 @@ class TypesChart extends Component {
     if (this.state.error) {
       return <div>Error: Can't display chart</div>;
     }
-    
+
     return (
       <this.StyledChart>
         <ResponsiveContainer width='100%' height='100%'>
           <RadarChart
-            data={this.state.data.data}
+            data={this.state.data}
             innerRadius='0%'
             outerRadius='67%'
             startAngle={-150}

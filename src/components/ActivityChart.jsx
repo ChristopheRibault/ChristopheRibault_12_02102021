@@ -1,16 +1,16 @@
 import { Component } from 'react';
 import { BarChart, Tooltip, XAxis, YAxis, Legend, Bar, ResponsiveContainer, Customized, CartesianGrid } from 'recharts';
-import Fetcher from '../utils/fetcher';
+import Service from '../utils/service';
 import { ActivityTooltip as CustomTooltip } from '.';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const fetcher = new Fetcher();
 class ActivityChart extends Component {
   constructor(props) {
     super(props);
+    this.service = new Service(props.id);
     this.state = { 
-      data: {},
+      sessions: [],
       error: null,
     };
   }
@@ -31,8 +31,8 @@ class ActivityChart extends Component {
   }
 
   componentDidMount() {
-    fetcher.get(this.props.id, 'activity')
-      .then(data => this.setState(data))
+    this.service.getSessions()
+      .then(sessions => this.setState({ sessions }))
       .catch(error => this.setState({ error }));
   }
 
@@ -53,7 +53,7 @@ class ActivityChart extends Component {
     return (
       <this.StyledChart>
         <ResponsiveContainer width='100%' height={200}>
-          <BarChart data={this.state.data.sessions}>
+          <BarChart data={this.state.sessions}>
             <Customized component={() => <text
               fontSize='1em'
               fontWeight={500}

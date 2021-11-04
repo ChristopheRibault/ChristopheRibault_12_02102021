@@ -4,15 +4,14 @@ import { Redirect } from 'react-router-dom';
 import style from 'styled-components';
 import { Greetings } from '../components';
 import { Charts } from '../layout';
-import Fetcher from '../utils/fetcher';
-
-const fetcher = new Fetcher();
+import Service from '../utils/service';
 
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.service = new Service(props.match.params.id);
     this.state = {
-      data: {},
+      user: {},
       error: null,
     };
   }
@@ -23,8 +22,8 @@ class Home extends Component {
   `
 
   componentDidMount() {
-    fetcher.get(this.props.match.params.id)
-      .then(data => this.setState(data))
+    this.service.getUser()
+      .then(user => this.setState({ user }))
       .catch(error => this.setState({ error }));
   }
 
@@ -36,7 +35,7 @@ class Home extends Component {
 
     return (
       <this.StyledMain className='home-page'>
-        <Greetings name={this.state.data?.userInfos?.firstName} />
+        <Greetings name={this.state.user?.firstName} />
         <Charts id={this.props.match.params.id} />
       </this.StyledMain>
     );

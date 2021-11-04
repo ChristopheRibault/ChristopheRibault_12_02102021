@@ -12,14 +12,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { DurationTooltip as CustomTooltip } from '.';
 
-import Fetcher from '../utils/fetcher';
-const fetcher = new Fetcher();
+import Service from '../utils/service';
 
 class DurationChart extends Component {
   constructor(props) {
     super(props);
+    this.service = new Service(props.id);
     this.state = { 
-      data: {},
+      sessions: [],
       activeX: '100%',
       error: null,
     };
@@ -58,8 +58,8 @@ class DurationChart extends Component {
   }
 
   componentDidMount() {
-    fetcher.get(this.props.id, 'average-sessions')
-      .then(data => this.setState(data))
+    this.service.getDurations()
+      .then(sessions => this.setState({ sessions }))
       .catch(error => this.setState({ error }));
   }
 
@@ -68,12 +68,12 @@ class DurationChart extends Component {
     if (this.state.error) {
       return <div>Error: Can't display chart</div>;
     }
-    
+
     return (
       <this.StyledChart>
         <ResponsiveContainer width={'100%'} height={'100%'}>
           <LineChart 
-            data={this.state.data.sessions}
+            data={this.state.sessions}
             onMouseMove={this.onMouseMove.bind(this)}
             margin={{
               top:20,

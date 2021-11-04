@@ -1,15 +1,14 @@
 import { Component } from 'react';
-import Fetcher from '../utils/fetcher';
+import Service from '../utils/service';
 import icons from '../assets/icons';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
-const fetcher = new Fetcher();
 
 class KeyData extends Component {
 
   constructor(props) {
     super(props);
+    this.service = new Service(props.id);
     this.state = {
       data: {},
       error: null,
@@ -59,8 +58,8 @@ class KeyData extends Component {
   `;
 
   componentDidMount() {
-    fetcher.get(this.props.id)
-      .then(data => this.setState(data))
+    this.service.getKeyData()
+      .then(keyData => this.setState({ keyData }))
       .catch(error => this.setState({ error }));
   }
 
@@ -70,7 +69,7 @@ class KeyData extends Component {
       return <div>Error: Can't display chart</div>;
     }
 
-    const { keyData } = this.state.data;
+    const { keyData } = this.state;
     const data = [
       {
         icon: 'calories',
